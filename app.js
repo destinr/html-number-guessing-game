@@ -4,12 +4,12 @@ const guesses = [];
 
 const randAnswer = Math.floor((Math.random()*(100)))
 
+const guessDiv = document.getElementById("prevGuesses")
+guessDiv.innerHTML = "Previous guesses: "
+
 const returnGuessList = () => {
-    let returnString = guesses.join("-")
-    guessDiv = document.getElementById("prevGuesses")
-    document.body.appendChild(guessDiv)
-    guessDiv.innerHTML = "Previous guesses: "
-    guessDiv.innerHTML += returnString
+    let lastGuess = guesses.slice(-1)
+    guessDiv.innerHTML += lastGuess + " "
     
 }
 
@@ -25,19 +25,19 @@ const acceptGuess = () => {
    }
 
    else if (currentGuess < randAnswer){
-    gh.innerHTML = ""
+    //gh.innerHTML = ""
     gh.innerHTML = `Guess ${currentGuess} is too small. Input a bigger number.`
     gh.style.backgroundColor = `rgb(256,0,0)`
     returnGuessList()
    }
 
    else if (currentGuess > randAnswer){
-    gh.innerHTML = ""
+    //gh.innerHTML = ""
     gh.innerHTML = `Guess ${currentGuess} is too big. Input a smaller number.`
     gh.style.backgroundColor = `rgb(256,0,0)`
     returnGuessList()
    } 
 
-   document.body.appendChild(gh)
+   document.getElementById("numGuesses").innerHTML = `Number of guesses: ${guesses.length}`
 }
 
