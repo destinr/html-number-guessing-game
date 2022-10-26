@@ -13,6 +13,15 @@ const returnGuessList = () => {
     
 }
 
+const inputBox = document.getElementById("guess")
+inputBox.addEventListener("keypress",function(event) {
+    if (event.key === "Enter"){
+        event.preventDefault();
+        document.getElementById("guessButton").click();
+    }
+    
+});
+
 const acceptGuess = () => {
    let currentGuess = parseInt(document.getElementById("guess").value)
    guesses.push(currentGuess)
@@ -39,5 +48,6 @@ const acceptGuess = () => {
    } 
 
    document.getElementById("numGuesses").innerHTML = `Number of guesses: ${guesses.length}`
+   document.getElementById("guess").value = ""
 }
 
